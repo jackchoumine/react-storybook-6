@@ -2,12 +2,13 @@
  * @Description :
  * @Date        : 2022-10-22 05:06:51 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-10-22 06:15:13 +0800
+ * @LastEditTime: 2022-10-22 06:19:51 +0800
  * @LastEditors : JackChou
  */
 import React from 'react'
 import { Button } from '@chakra-ui/react'
-import { actions, action } from '@storybook/addon-actions'
+// import { actions, action } from '@storybook/addon-actions'
+
 export default {
   title: 'Chakra/Button',
   component: Button,
@@ -24,9 +25,10 @@ export const ColorButton = Template.bind()
 ColorButton.args = {
   colorScheme: 'red',
   children: 'Button',
+  onClick: () => console.log('onClick'),
   // NOTE 事件
   // onClick: action('onClick'),
-  ...actions('onClick', 'onMouseOver'),
+  // ...actions('onClick', 'onMouseOver'),
 }
 
 // export const ActionsButton = Template.bind()
