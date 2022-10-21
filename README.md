@@ -216,4 +216,12 @@ addDecorator(chakraProvider)
 addDecorator(centerDecorator)
 ```
 
+## 插件
+
+storybook 通过插件来扩展其功能。
+
+安装依赖后，在`.storybook/main.js` 里添加插件。
+
+[storybook 插件](https://storybook.js.org/docs/react/configure/storybook-addons)
+
 ## 参考
