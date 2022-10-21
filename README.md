@@ -99,4 +99,74 @@ export const SimpleForm = () => {
 
 [详情信息](https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#v7-style-story-sort)
 
+### 装饰器
+
+```tsx
+import Center from './Center'
+// NOTE
+// 默认导出二级才菜单 Button  Form 为一级菜单
+// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+export default {
+  title: 'Form/Button',
+  component: Button,
+  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
+  argTypes: {
+    backgroundColor: { control: 'color' },
+  },
+} as ComponentMeta<typeof Button>
+
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+const Template: ComponentStory<typeof Button> = args => (
+  <Center>
+    <Button {...args} />
+  </Center>
+)
+```
+
+所有 Button 都居中了，Center 像 CSS 一样装饰了 Button。
+
+Story 的装饰器，也是类似的作用。
+
+在默认导出添加装饰器选项：
+
+```js
+function centerDecorator(story) {
+  return <Center>{story()}</Center>
+}
+
+export default {
+  title: 'Form/Button',
+  component: Button,
+  argTypes: {
+    backgroundColor: { control: 'color' },
+  },
+  decorators: [centerDecorator],
+}
+```
+
+和在**所有 story**上添加嵌套 Center 组件一样的效果。
+
+在默认导出上使用的装饰器作用于组件的 story，希望在所有 story 都应用，能办到吗？
+
+> 全局装饰器
+
+修改`.storybook/preview.js` 为 `.storybook/preview.jsx`，
+
+添加全局装饰器
+
+```jsx
+import React from 'react'
+
+import { addDecorator } from '@storybook/react'
+import Center from '../src/stories/Center'
+
+function centerDecorator(story) {
+  return <Center>{story()}</Center>
+}
+
+addDecorator(centerDecorator)
+```
+
+[storybook 装饰器](https://storybook.js.org/docs/react/writing-stories/decorators)
+
 ## 参考
