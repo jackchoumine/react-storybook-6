@@ -1,10 +1,12 @@
 import React from 'react'
 
-import { addDecorator } from '@storybook/react'
+import { addDecorator, addParameters } from '@storybook/react'
 import Center from '../src/stories/Center'
 import { withConsole } from '@storybook/addon-console'
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 // 1. import `ChakraProvider` component
 import { ChakraProvider, CSSReset, theme, Box } from '@chakra-ui/react'
+import { add } from 'lodash'
 
 function chakraProvider(story) {
   return (
@@ -21,6 +23,12 @@ function centerDecorator(story) {
 addDecorator(chakraProvider)
 addDecorator(centerDecorator)
 addDecorator((story, context) => withConsole()(story)(context))
+
+addParameters({
+  viewport: {
+    viewports: INITIAL_VIEWPORTS,
+  },
+})
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
