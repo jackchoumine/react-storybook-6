@@ -24,6 +24,7 @@ Primary.args = {
   primary: true,
   label: 'Button',
 }
+// NOTE 菜单重命名
 Primary.storyName = 'primary button'
 export const Secondary = Template.bind({})
 Secondary.args = {

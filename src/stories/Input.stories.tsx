@@ -2,7 +2,7 @@
  * @Description :
  * @Date        : 2022-10-20 04:06:26 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-10-20 04:25:41 +0800
+ * @LastEditTime: 2022-10-22 03:47:56 +0800
  * @LastEditors : JackChou
  */
 import React from 'react'
@@ -20,6 +20,12 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Input> = args => <Input {...args} />
+
+export const TextInput = Template.bind({})
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+TextInput.args = {
+  type: 'text',
+}
 
 export const DateInput = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
