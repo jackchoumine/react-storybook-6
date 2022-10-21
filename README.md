@@ -169,4 +169,51 @@ addDecorator(centerDecorator)
 
 [storybook 装饰器](https://storybook.js.org/docs/react/writing-stories/decorators)
 
+使用全局装饰器提供主题。
+
+安装依赖：
+
+```sh
+npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
+```
+
+使用一个按钮：
+
+`ChakraButton.stories.jsx`
+
+```jsx
+import React from 'react'
+import { Button } from '@chakra-ui/react'
+
+export default {
+  title: 'Chakra/Button',
+  component: Button,
+}
+
+export const BlueButton = () => <Button colorScheme='blue'>Button</Button>
+```
+
+这样使用按钮样式不生效，根据文档，需要样式 Provider，通过全局装饰器提供。
+
+修改`.storybook/preview.jsx`
+
+```jsx
+import { ChakraProvider, CSSReset, theme, Box } from '@chakra-ui/react'
+
+function chakraProvider(story) {
+  return (
+    <ChakraProvider theme={theme}>
+      <CSSReset />
+      {<Box m='8'>{story()}</Box>}
+    </ChakraProvider>
+  )
+}
+function centerDecorator(story) {
+  return <Center>{story()}</Center>
+}
+
+addDecorator(chakraProvider)
+addDecorator(centerDecorator)
+```
+
 ## 参考
