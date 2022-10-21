@@ -2,7 +2,7 @@
  * @Description :
  * @Date        : 2022-10-22 05:06:51 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-10-22 06:19:51 +0800
+ * @LastEditTime: 2022-10-22 07:00:44 +0800
  * @LastEditors : JackChou
  */
 import React from 'react'
@@ -25,7 +25,8 @@ export const ColorButton = Template.bind()
 ColorButton.args = {
   colorScheme: 'red',
   children: 'Button',
-  onClick: () => console.log('onClick'),
+  // FIXME 设置环境变量无效
+  onClick: () => console.log('onClick', process.env.STORYBOOK_THEME, process.env.STORYBOOK_COLOR),
   // NOTE 事件
   // onClick: action('onClick'),
   // ...actions('onClick', 'onMouseOver'),
