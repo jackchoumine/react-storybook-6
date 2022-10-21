@@ -2,7 +2,7 @@
  * @Description :
  * @Date        : 2022-10-20 04:06:26 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-10-22 03:47:56 +0800
+ * @LastEditTime: 2022-10-22 04:22:01 +0800
  * @LastEditors : JackChou
  */
 import React from 'react'
@@ -30,7 +30,7 @@ TextInput.args = {
 export const DateInput = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 DateInput.args = {
-  title: 'Title',
+  title: 'DateInput',
   type: 'date',
 }
 DateInput.storyName = '日期选择器'
@@ -38,7 +38,7 @@ DateInput.storyName = '日期选择器'
 export const PasswordInput = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 PasswordInput.args = {
-  title: 'Title',
+  ...DateInput.args,
   type: 'password',
 }
 PasswordInput.storyName = '密码输入'

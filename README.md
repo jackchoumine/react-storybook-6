@@ -30,6 +30,29 @@ Primary.storyName = 'primary button'
 
 **命名导出**作为组件菜单下的菜单，可通过`storyName`属性重命名。
 
+### 参数
+
+story 有一些参数，这些参数对应 react 的 props。
+
+```ts
+const Template: ComponentStory<typeof Input> = args => <Input {...args} />
+
+export const TextInput = Template.bind({})
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+TextInput.args = {
+  type: 'text',
+}
+
+export const PasswordInput = Template.bind({})
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+PasswordInput.args = {
+  ...DateInput.args,
+  type: 'password',
+}
+```
+
+参数之间可组合使用，就和 js 对象一样。
+
 ### story 组合
 
 组件可组合，形成更加复杂的组件，story 也可组合。
