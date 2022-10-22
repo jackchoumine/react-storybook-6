@@ -14,4 +14,14 @@ module.exports = {
   features: {
     // storyStoreV7: true,
   },
+  //FIXME more info
+  // https://github.com/storybookjs/storybook/issues/1291#issuecomment-1147754699
+  viteFinal: (config, { configType }) => {
+    // console.log(config)
+    // some configs
+    if (configType === 'PRODUCTION') {
+      config.base = './'
+    }
+    return config
+  },
 }

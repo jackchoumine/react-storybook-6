@@ -224,4 +224,51 @@ storybook 通过插件来扩展其功能。
 
 [storybook 插件](https://storybook.js.org/docs/react/configure/storybook-addons)
 
+## 遇到的问题
+
+> 部署后不显示 control 面板
+
+按`A`显示/隐藏，按`D`切换位置。
+
+[Controls is not visible/shown in canvas/addons (only in docs)](https://github.com/storybookjs/storybook/issues/12481#issuecomment-874968558)
+
+> 部署到 github project pages 后，js 404。
+
+使用`gh-pages`部署到 project page，会向 github user page 寻找脚本，导致 404。
+
+`github user page`是我的博客地址。
+
+1. 推荐的解决方案 -- 修改静态资源引入路径
+
+`.storybook/main.cjs` 添加 viteFinal：
+
+```js
+module.exports = {
+  //FIXME more info
+  // https://github.com/storybookjs/storybook/issues/1291#issuecomment-1147754699
+  viteFinal: (config, { configType }) => {
+    // console.log(config)
+    // some configs
+    if (configType === 'PRODUCTION') {
+      config.base = './'
+    }
+    return config
+  },
+}
+```
+
+2. 比较麻烦的解决方案
+
+每次部署，在执行博客部署脚本，把打包输出的资源移动到博客项目，再部署个人博客。
+
+> 在 stories 中引入 chakra-ui 的 Button 组件后，侧边栏显示 chakra-ui 的 story。
+
+还不知道原因。
+
+可能的解决办法：
+
+[What I've learned using Chakra-Ui so far](https://dev.to/carlosrafael22/what-i-ve-learned-with-chakra-ui-so-far-4f5e)
+
+[Chakra UI and Storybook](https://ashwin.hashnode.dev/chakra-ui-and-storybook)
+
 ## 参考
